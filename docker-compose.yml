@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+
+    dbpostgres:
+        container_name: postgres_container
+        image: postgres:13-alpine
+        restart: always
+        environment:
+            POSTGRES_HOST_AUTH_METHOD: trust
+            POSTGRES_DB: ${POSTGRES_DB:-basile}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
+            POSTGRES_USER: ${POSTGRES_USER:-root}
+        ports:
+            - "5432:5432"
+  
+    pgadmin:
+        container_name: pgadmin4_container
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@admin.com}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-root}
+        ports:
+            - 8080:80
+
+    www:
+        build: php
+        depends_on:
+            - dbpostgres
+        container_name: www_symfony
+        ports:
+          - "8081:80"
+        volumes:
+            - ./php/vhosts:/etc/apache2/sites-enabled
+            - ./:/var/www
+        environment:
+            DATABASE_URL: "pgsql://${POSTGRES_USER:-root}:${POSTGRES_PASSWORD:-root}@dbpostgres:5432/${POSTGRES_DB:-basile}"
+        restart: always
+
+networks:
+    dev:
+
+volumes:
+    db-data:  

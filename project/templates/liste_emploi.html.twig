@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des offres d'emploi{% endblock %}
+
+{% block body %}
+
+    <div class="py-5">
+		<div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="mb-5">Liste des offres d'emploi</h1>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-info" href="{{ path('loadApiData') }}">Charger les offres</a>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-danger" href="{{ path('resetApiData') }}">Supprimer les offres</a>
+                </div>
+            </div>
+            {% for job in data %}
+                <a target="_blank" href="{{ job.applyurl }}" style="text-decoration: none">
+                    <div class="card mb-3" style="width: 100%;">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
+                            <h5 class="card-title">Poste de {{ job.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-map-marker"></i> {{ job.city }}</h6>
+                            <p class="card-text">{{ job.jobdescription|striptags|raw }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+		</div>
+	</div>
+    
+{% endblock %}
