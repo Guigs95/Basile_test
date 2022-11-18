@@ -1,0 +1,48 @@
+# Cache and logs
+/project/app/cache/*
+/project/app/logs/*
+!/project/app/cache/.gitkeep
+!/projectapp/logs/.gitkeep
+
+# Email spool folder
+/project/app/spool/*
+
+# Cache, session files and logs
+/project/var/cache/*
+/project/var/logs/*
+/project/var/sessions/*
+!/project/var/cache/.gitkeep
+!/project/var/logs/.gitkeep
+!/project/var/sessions/.gitkeep
+
+# Logs
+/project/var/log/*
+!/project/var/log/.gitkeep
+
+# Parameters
+/project/app/config/parameters.yml
+/project/app/config/parameters.ini
+
+# Managed by Composer
+/project/app/bootstrap.php.cache
+/project/var/bootstrap.php.cache
+/project/bin/*
+!/project/bin/console
+!/project/bin/symfony_requirements
+/project/vendor/
+
+# Assets and user uploads
+/web/bundles/
+/web/uploads/
+
+# Build data
+/project/build/
+
+# Composer PHAR
+/project/composer.phar
+
+# Backup entities generated with doctrine:generate:entities command
+**/Entity/*~
+
+# Embedded web-server pid file
+/.web-server-pid
