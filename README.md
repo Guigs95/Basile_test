@@ -31,26 +31,34 @@ $ docker-compose up --build -d
 # On récupère le Container ID du container ayant le nom "postgres_container"
 $ docker ps
 ```
+
 <img src="tutorials/2022-11-20_14h03_17.png">
+
 ```
 # On récupère l'adresse IP du container en spécifiant l'id
 $ docker inspect 'MON_CONTAINER_ID'
 ```
+
 <img src="tutorials/2022-11-20_14h05_47.png">
+
 ```
 # rdv sur 127.0.0.1:8080 
 # On créer un serveur avec l'adresse IP du container postregsql
 # USER : root
 # PASSWORD : root 
 ```
+
 <img src="tutorials/2022-11-20_14h23_43.png">
+
 ```
 # Exécuter Doctrine
 # A la racine du projet 
 $ winpty docker exec -it www_symfony bash
 $ cd projet
 ```
+
 <img src="tutorials/2022-11-20_14h08_19.png">
+
 ```
 LE PROJET EST LANCé sur 127.0.0.1:8081
 ```
