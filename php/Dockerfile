@@ -16,8 +16,4 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install intl pdo pdo_pgsql pgsql pdo_mysql mysqli
 RUN pecl install apcu && docker-php-ext-enable apcu
 
-# Doctrine
-WORKDIR /var/www/project/
-CMD ["/var/www/php/init.sh"]
-
 WORKDIR /var/www/

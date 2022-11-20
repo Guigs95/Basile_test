@@ -22,8 +22,39 @@ Author : Guillaume DOMINICI
 - PHP 8.1
 
 ### Lancer l'application
-- Dans le répertoire /project -> composer install
-- A la racine -> docker-compose up --build
+```
+# Dans le répertoire /project
+$ composer install
+# A la racine : pour démarrer le projet
+$ docker-compose up --build -d
+# Créer le serveur le BDD Postgresql
+# On récupère le Container ID du container ayant le nom "postgres_container"
+$ docker ps
+```
+<img src="2022-11-20_14h03_17.png">
+```
+# On récupère l'adresse IP du container en spécifiant l'id
+$ docker inspect 'MON_CONTAINER_ID'
+```
+
+<img src="2022-11-20_14h05_47.png">
+```
+# rdv sur 127.0.0.1:8080 
+# On créer un serveur avec l'adresse IP du container postregsql
+# USER : root
+# PASSWORD : root 
+```
+<img src="2022-11-20_14h23_43.png">
+```
+# Exécuter Doctrine
+# A la racine du projet 
+$ winpty docker exec -it www_symfony bash
+$ cd projet
+```
+<img src="2022-11-20_14h08_19.png">
+```
+LE PROJET EST LANCé sur 127.0.0.1:8081
+```
 
 ### Raisonnement
 J'ai pris le partie d'enregistrer les données les plus importantes en fonction de la consigne. 
