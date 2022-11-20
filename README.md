@@ -18,7 +18,7 @@ Author : Guillaume DOMINICI
 ### Stack
 - Symfony 5.4.9
 - Postgresql 13
-- PgAmdin 4
+- PgAdmin 4
 - PHP 8.1
 
 ### Lancer l'application
